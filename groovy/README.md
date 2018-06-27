@@ -38,8 +38,8 @@ WARNING:
 -	[`3.0.0-alpha-2-jre8`, `3.0-jre8`, `3.0.0-alpha-2-jre`, `3.0-jre`, `3.0.0-alpha-2`, `3.0` (*jre8/Dockerfile*)](https://github.com/groovy/docker-groovy/blob/03b06a43362a7c9d046bc57ea9e76a7347424239/jre8/Dockerfile)
 -	[`3.0.0-alpha-2-jdk8-alpine`, `3.0-jdk8-alpine`, `3.0.0-alpha-2-jdk-alpine`, `3.0-jdk-alpine` (*jdk8-alpine/Dockerfile*)](https://github.com/groovy/docker-groovy/blob/03b06a43362a7c9d046bc57ea9e76a7347424239/jdk8-alpine/Dockerfile)
 -	[`3.0.0-alpha-2-jre8-alpine`, `3.0-jre8-alpine`, `3.0.0-alpha-2-jre-alpine`, `3.0-jre-alpine`, `3.0.0-alpha-2-alpine`, `3.0-alpine` (*jre8-alpine/Dockerfile*)](https://github.com/groovy/docker-groovy/blob/03b06a43362a7c9d046bc57ea9e76a7347424239/jre8-alpine/Dockerfile)
--	[`3.0.0-alpha-2-jdk10`, `3.0-jdk10` (*jdk10/Dockerfile*)](https://github.com/groovy/docker-groovy/blob/03b06a43362a7c9d046bc57ea9e76a7347424239/jdk10/Dockerfile)
--	[`3.0.0-alpha-2-jre10`, `3.0-jre10` (*jre10/Dockerfile*)](https://github.com/groovy/docker-groovy/blob/03b06a43362a7c9d046bc57ea9e76a7347424239/jre10/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/groovy/badge/icon) (`arm64v8/groovy` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/groovy/)
 
 # Quick reference
 
@@ -85,7 +85,7 @@ Note that if you are mounting a volume and the uid running Docker is not `1000`,
 
 ## Running a Groovy script
 
-`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts groovy groovy <script> <script-args>`
+`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts arm64v8/groovy groovy <script> <script-args>`
 
 ## Reusing the Grapes cache
 
@@ -93,20 +93,20 @@ The local Grapes cache can be reused across containers by creating a volume and 
 
 ```console
 docker volume create --name grapes-cache
-docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes groovy
+docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes arm64v8/groovy
 ```
 
 **Note: Java 9 and Java 10 support is experimental**
 
 # Image Variants
 
-The `groovy` images come in many flavors, each designed for a specific use case.
+The `arm64v8/groovy` images come in many flavors, each designed for a specific use case.
 
-## `groovy:<version>`
+## `arm64v8/groovy:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `groovy:alpine`
+## `arm64v8/groovy:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
